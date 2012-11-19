@@ -3,7 +3,7 @@
 if(isset($_POST["MM_login"])){
 	include "auth.php";
 	$aut=new auth();
-	$aut->login($_POST["nama_user"],$_POST["passw_user"]);
+	$aut->login($_POST["nama_user"],$_POST["pass_user"]);
 }
 	
 ?>
