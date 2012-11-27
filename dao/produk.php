@@ -109,13 +109,53 @@ class Produk_Dao
 		return $list_produk;
 	}
 	
-	function edit(Produk $produk){
+	function edit(Produk $produk)
+	{
+		$sql="
+		update 
+		produk
+		set 
+		NAMA_PRODUK='$produk->nama_produk',
+		JUMLAH='$produk->jumlah',
+		HARGA='$produk->harga',
+		ID_KATEGORI='$produk->id_kategori',
+		GRADE='$produk->grade',
+		FOTO='$produk->foto',
+		PENERBIT='$produk->penerbit',
+		TAHUN_CETAK='$produk->tahun_cetak'
+		where ID_PRODUK='$produk->id_produk'
+		";
+		$query=mysql_query($sql);
 	}
 	
-	function add(Produk $produk){
+	function add(Produk $produk)
+	{
+		$sql="insert 
+		into 
+		produk
+		values(
+		'$produk->foto',
+		'$produk->grade',
+		'$produk->harga', 
+		'$produk->id_kategori',
+		'$produk->jumlah',
+		'$produk->nama_produk',
+		'$produk->penerbit',
+		'$produk->tahun_cetak')
+		";
+		$query=mysql_query($sql);
 	}
 	
-	function delete(Produk $produk){
+	function delete(Produk $produk)
+	{
+		$sql="drop 
+		into 
+		produk
+		values(
+		'$produk->id_produk)
+		";
+		$query=mysql_query($sql);
+		
 	}
 
 }
@@ -129,5 +169,6 @@ class Produk{
 	var $grade;
 	var $tahun_cetak;
 	var $harga;
+	var $jumlah;
 	var $foto;
 }
