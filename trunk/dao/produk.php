@@ -26,6 +26,7 @@ class Produk_Dao
 				
 				$produk->id_produk=$row['ID_PRODUK'];
 				$produk->id_kategori=$row['ID_KATEGORI'];
+				$produk->id_toko=$row['ID_TOKO'];
 				$produk->jumlah=$row['JUMLAH'];
 				$produk->nama_produk=$row['NAMA_PRODUK'];
 				$produk->harga=$row['HARGA'];
@@ -61,6 +62,7 @@ class Produk_Dao
 				
 				$produk->id_produk=$row['ID_PRODUK'];
 				$produk->id_kategori=$row['ID_KATEGORI'];
+				$produk->id_toko=$row['ID_TOKO'];
 				$produk->jumlah=$row['JUMLAH'];
 				$produk->nama_produk=$row['NAMA_PRODUK'];
 				$produk->harga=$row['HARGA'];
@@ -95,6 +97,7 @@ class Produk_Dao
 				
 				$produk->id_produk=$row['ID_PRODUK'];
 				$produk->id_kategori=$row['ID_KATEGORI'];
+				$produk->id_toko=$row['ID_TOKO'];
 				$produk->jumlah=$row['JUMLAH'];
 				$produk->nama_produk=$row['NAMA_PRODUK'];
 				$produk->harga=$row['HARGA'];
@@ -119,6 +122,7 @@ class Produk_Dao
 		JUMLAH='$produk->jumlah',
 		HARGA='$produk->harga',
 		ID_KATEGORI='$produk->id_kategori',
+		ID_TOKO='$produk->id_toko',
 		GRADE='$produk->grade',
 		FOTO='$produk->foto',
 		PENERBIT='$produk->penerbit',
@@ -138,6 +142,7 @@ class Produk_Dao
 		'$produk->grade',
 		'$produk->harga', 
 		'$produk->id_kategori',
+		'$produk->id_toko',
 		'$produk->jumlah',
 		'$produk->nama_produk',
 		'$produk->penerbit',
@@ -171,4 +176,5 @@ class Produk{
 	var $harga;
 	var $jumlah;
 	var $foto;
+	var $id_toko;
 }
