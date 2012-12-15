@@ -157,7 +157,7 @@ class Produk_Dao
 		into 
 		produk
 		values(
-		'$produk->id_produk)
+		'$produk->id_produk')
 		";
 		$query=mysql_query($sql);
 		
