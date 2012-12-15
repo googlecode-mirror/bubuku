@@ -102,46 +102,36 @@ class Toko_Dao
 		update 
 		toko
 		set 
-		NAMA_PRODUK='$produk->nama_produk',
-		JUMLAH='$produk->jumlah',
-		HARGA='$produk->harga',
-		ID_KATEGORI='$produk->id_kategori',
-		ID_TOKO='$produk->id_toko',
-		GRADE='$produk->grade',
-		FOTO='$produk->foto',
-		PENERBIT='$produk->penerbit',
-		TAHUN_CETAK='$produk->tahun_cetak'
-		where ID_PRODUK='$produk->id_produk'
+		NAMA_TOKO='$toko->nama_toko',
+		ALAMAT_TOKO='$toko->alamat_toko',
+		TELEPON_TOKO='$toko->telepon_toko',
+		EMAIL_TOKO='$toko->email_toko'
+		where ID_TOKO='$toko->id_toko'
 		";
 		$query=mysql_query($sql);
 	}
 	
-	function add(Produk $produk)
+	function add(Toko $toko)
 	{
 		$sql="insert 
 		into 
-		produk
+		toko
 		values(
-		'$produk->foto',
-		'$produk->grade',
-		'$produk->harga', 
-		'$produk->id_kategori',
-		'$produk->id_toko',
-		'$produk->jumlah',
-		'$produk->nama_produk',
-		'$produk->penerbit',
-		'$produk->tahun_cetak')
+		'$toko->nama_toko',
+		'$toko->alamat_toko',
+		'$toko->telepon_toko', 
+		'$toko->email_toko')
 		";
 		$query=mysql_query($sql);
 	}
 	
-	function delete(Produk $produk)
+	function delete(Toko $toko)
 	{
 		$sql="drop 
 		into 
-		produk
+		toko
 		values(
-		'$produk->id_produk)
+		'$toko->id_toko')
 		";
 		$query=mysql_query($sql);
 		
