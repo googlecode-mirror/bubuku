@@ -102,6 +102,17 @@ class Member_Dao
 		$query=mysql_query($sql);
 	}
 	
+	function delete(Member $member)
+	{
+		$sql="drop 
+		into 
+		member
+		values(
+		'$member->id')
+		";
+		$query=mysql_query($sql);
+	}
+	
 }
 
 class Member
