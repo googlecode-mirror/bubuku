@@ -1,3 +1,21 @@
+<?php
+include '../../koneksi.php';
+include '../dao/auth.php';
+
+if (isset($_POST['login']))
+{
+	$auth=new Auth();
+	$is_login=$auth->login($_POST['email'],$_POST['password']);
+	if ($is_login){
+		header('location:form_admin.html');
+		exit();
+	} else{
+	header('location:gagal.php');
+	exit();
+	}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
