@@ -80,7 +80,7 @@
                             <td bgcolor="#FFFFFF"></td>
                             <td bgcolor="#FFFFFF">&nbsp;</td>
                             <td bgcolor="#FFFFFF">&nbsp;</td>
-                            <td bgcolor="#FFFFFF"><a href="form_admin.php"><button class="btn btn-primary">Login</button></a><button class="btn btn-warning" type="button" value="Cancel" onClick="window.location.href='signup.php'">Signup</button></td>
+                            <td bgcolor="#FFFFFF"><a href="form_admin.php"><button class="btn btn-primary">Login</button></a><button class="btn btn-warning" type="button" value="Cancel" onClick="window.location.href='form_admin.html'">Cancel</button></td>
                          	<td bgcolor="#FFFFFF"></td>
                           </tr>
                            <tr>
