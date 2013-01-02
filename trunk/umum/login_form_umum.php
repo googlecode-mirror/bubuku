@@ -1,28 +1,40 @@
 <?php
-session_start();
-include_once '/dao/user.php';
-$user = new User();
- 
-if ($user->get_session())
-{
-    header("location:home.php");
-}
- 
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $login = $user->check_login($_POST['emailusername'], $_POST['password']);
-    if ($login)
-    {
-        // Login Success
-        header("location:login.php");
-    }
-    else
-    {
-        // Login Failed
-        $msg= 'Username / password wrong';
-    }
-}
+include '../dao/user.php';
+include '../dao/member.php';
+include '../koneksi.php';
+include '../dao/auth.php';
+
+$koneksi=new koneksi();
+$koneksi->konek();
+$koneksi->konekDb();
+$auth=new auth();
+$auth->login_member();
+
+if(isset($_POST["MM_login"])){
+	if($_POST["email"]=="" || $_POST["password"]=="" ){
+		echo "<script>alert('Silahkan isikan Email dan Password terlebih dahulu!');</script>";}
+		else {
+				$user = new User();
+				$user->email=$_POST["email"];
+				$user->password=$_POST["password"];
+				$User_Dao=new User_Dao();
+				if($User_Dao->cek_user($user)==false){
+					echo"<script>alert('Email dan Password tidak sesuai!');</script>";
+				}
+					if($nama->role=="user"){
+						//echo '2';
+						$Member_Dao=new Member_Dao();
+						$member=$Member_Dao->get_id($nama->id);
+						session_start();
+						$_SESSION['MM_Username'] = $member->nama;
+						$_SESSION['MM_Id'] = $member->id;
+						$_SESSION['MM_Email'] = $email;
+						header ("Location:$home_user.php");
+					}
+				} 
+}	
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -88,11 +100,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
       <form class="form-signin">
         <h2 class="form-signin-heading">LOGIN</h2>
-        <input type="text" class="input-block-level" placeholder="Email address">
-        <input type="password" class="input-block-level" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
+        <p>
+          <input type="text" class="input-block-level" placeholder="Email address">
+          <input type="password" class="input-block-level" placeholder="Password">
+          <label class="checkbox">
+            <br>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </p>
         <button class="btn btn-large btn-primary" type="submit">Masuk</button>
         <button class="btn btn-large btn-primary" type="submit">Batal</button>
          <div class="controls">
