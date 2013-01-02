@@ -1,6 +1,6 @@
 <?php
 
-class db{
+class Koneksi{
 
 	private $server;
 	private $user;
