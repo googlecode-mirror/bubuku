@@ -17,13 +17,14 @@ class auth
 			if ($email=="" and $password=="")
 			{
 			//echo '1';
-				header ("Location: login_form.php");
+				$w1="Silahkan isikan email dan password terlebih dahulu!";
+				header ("Location: login_form_umum.php");
 			}
 
 			if($User_Dao->cek_user($email,$password)==false)
 			{
 			//echo '2';
-				header ("Location: login_form.php");
+				header ("Location: login_form_umum.php");
 			}
 
 			if($User_Dao->cek_user($email,$password)==true)
@@ -36,15 +37,25 @@ class auth
 					header ("Location:admin/admin.php");
 				}
 				
-				if($nama->akses=="member")
+				if($nama->akses=="user")
 				{
 					//echo '2';
 					$Member_Dao=new Member_Dao();
 					$member=$Member_Dao->get_id($nama->id);
-					$_SESSION['MM_Username'] = $member->nama;
+					$_SESSION['MM_Username'] = $nama->nama;
 					$_SESSION['MM_Id'] = $member->id;
 					$_SESSION['MM_Email'] = $email;
-					header ("Location:member/member.php");
+					header ("Location:home_user.php");
+				}
+				if($nama->akses=="toko")
+				{
+					//echo '2';
+					$Member_Dao=new Member_Dao();
+					$member=$Member_Dao->get_id($nama->id);
+					$_SESSION['MM_Username'] = $nama->nama;
+					$_SESSION['MM_Id'] = $member->id;
+					$_SESSION['MM_Email'] = $email;
+					header ("Location:home_toko.php");
 				}
 				
 			}
@@ -53,14 +64,13 @@ class auth
 	public function cek_sesi()
 	{
 		if (!isset($_SESSION['MM_Nama_user'])){
-			header("Location:login_form.php");
+			header("Location:login_form_umum.php");
 		}
 	}
 	
 	public function logout()
 	{
 		session_destroy();
-		header ("Location:login.php");
 	
 	}
 	
