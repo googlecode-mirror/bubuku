@@ -5,11 +5,22 @@ include '../dao/user.php';
 
 $koneksi=new koneksi();
 $koneksi->konek();
+$koneksi->konekDb();
 
-if (ISSET($_POST["registrasi_member"]) ){
+if(isset($_POST['batal']))
+{
+	header("Location: home_guest.php");	
+}
+
+if(isset($_POST['login']))
+{
+	header("Location: login_form_umum.php");	
+}
+
+if (isset($_POST["registrasi"]) ){
 
 	$ernama = $eremail = $erpass1 = $erpass2 = "";
-	if($_POST['nama']=="") { 
+	if(empty($ernama)) { 
 		$ernama = "Field nama.";
 		}
 	if($_POST['email']=="") { 
@@ -41,10 +52,10 @@ if (ISSET($_POST["registrasi_member"]) ){
 				$User_Dao->add($user);
 				
 				$user2 = $User_Dao->get_email($_POST['email']);
-			
-				$Member_Dao=new Member_Dao();
+				
+				$member_dao = new Member_Dao();
 				$member = new Member();
-				$member->id = $user2->id;
+				$member->id_user = $user2->id;
 				//echo $member->id;
 				$member->nama = $_POST['nama'];
 				//echo $member->nama;
@@ -53,10 +64,10 @@ if (ISSET($_POST["registrasi_member"]) ){
 				$member->tanggal_daftar = $_POST['tanggal_daftar'];
 				$member->agama = $_POST['agama'];
 				$member->jenis_kelamin = $_POST['jenis_kelamin'];
-				$Member_Dao->add($member);
-				$koneksi->close();
+				$member_dao->add($member);
 				echo "<script>alert('Registrasi berhasil. Silahkan login menggunakan email dan password yang Anda daftarkan.!');
 				</script>";
+				
 				
 						
 		} else { echo "<script>alert('Peringatan : Email tidak tersedia. Silahkan pilih email yang lain');</script>";}
@@ -110,7 +121,11 @@ if (ISSET($_POST["registrasi_member"]) ){
                 <!--konten utama -->
         		<div class="span8 offset2">
             		<form action="#" method="POST">
-                        <b><h2><font color="#000099">Sign up</font></h2></b><br>
+            		<input type="hidden" name="registrasi_member">
+				    <input type="hidden" name="tanggal_daftar" value=<?php echo date("Y-m-d"); ?>>
+                    <input type="hidden" name="akses" value=<?php echo "user"; ?>>
+
+                        <b><h2><font color="#000099">Form Pendaftaran</font></h2></b><br>
                         <table width="650" border="0" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
                           <tr>
                             <td width="140" bgcolor="#FFFFFF">
@@ -125,7 +140,7 @@ if (ISSET($_POST["registrasi_member"]) ){
                                 <td>&nbsp;</td>
                               </tr>
                               <tr>
-                                <td width="73" height="35">Nama Lengkap</td>
+                                <td width="149" height="35">Nama Lengkap</td>
                                 <td width="4">:</td>
                                 <td width="212"><input type="text" name="nama" size="50"></td>
                                 <td width="4">&nbsp;</td>
@@ -136,16 +151,16 @@ if (ISSET($_POST["registrasi_member"]) ){
                               <tr>
                                 <td height="31">Password</td>
                                 <td>:</td>
-                                <td><input type="password" name="password" size="30"></td>
+                                <td><input type="password" name="password1" size="30"></td>
                                 <td>&nbsp;</td>
                                 <td>Confirm Password</td>
                                 <td>:</td>
-                                <td><input type="password" name="confpass" size="30"></td>
+                                <td><input type="password" name="password2" size="30"></td>
                               </tr>
                               <tr>
                                 <td height="31">Alamat</td>
                                 <td>:</td>
-                                <td><input type="text" name="alamat" size="200"></td>
+                                <td><textarea name="alamat" rows="3"></textarea></td>
                                 <td>&nbsp;</td>
                                 <td>Telepon</td>
                                 <td>:</td>
@@ -154,19 +169,31 @@ if (ISSET($_POST["registrasi_member"]) ){
                               <tr>
                                 <td height="31">Agama</td>
                                 <td>:</td>
-                                <td><input type="text" name="Agama" size="20"></td>
+                                <td><select name="agama">
+                                    <option value="Islam">Islam</option>
+                                    <option value="Kristen Protestan">Kristen Protestan</option>
+                                    <option value="Katholik">Katholik</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Budha">Budha</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                                </td>
                                 <td>&nbsp;</td>
                                 <td>Jenis Kelamin</td>
                                 <td>:</td>
-                                <td><input type="text" name="Jenis Kelamin" size="10"></td>
+                                <td><select name="jenis_kelamin">
+                                	<option value="Laki-Laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                                </td>
                               </tr>
                               <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>                                	
-                                	<button class="btn btn-primary" type="submit" value="Simpan member">Daftar</button>
-                            		<button class="btn btn-primary" type="reset">Reset</button>
-                                    <button class="btn btn-primary" type="submit">Cancel<a href="home_guest.php"</a></button>
+                                	<button class="btn btn-primary" name="registrasi" type="submit" value="submit">Daftar</button>
+                            		<button class="btn btn-primary" type="submit" name="batal">Batal</button>
+                                    <button class="btn btn-primary" type="submit" name="login">Login</button>
 								</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
