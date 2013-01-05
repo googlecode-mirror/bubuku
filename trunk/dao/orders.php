@@ -111,7 +111,7 @@ class Orders_Dao
 	{
 		$sql="insert 
 		into 
-		orders
+		orders(STATUS_ORDER, TANGGAL_ORDER)
 		values(
 		'$orders->status_order',
 		'$orders->tanggal_order')
