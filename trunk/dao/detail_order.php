@@ -116,7 +116,7 @@ class Detail_order_Dao
 	{
 		$sql="insert 
 		into 
-		detail_order
+		detail_order(ID_PRODUK, JUMLAH_BELI, TOTAL_HARGA)
 		values(
 		'$detail_order->id_produk',
 		'$detail_order->jumlah_beli',
