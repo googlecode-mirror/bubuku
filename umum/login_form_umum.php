@@ -2,36 +2,40 @@
 include '../dao/user.php';
 include '../dao/member.php';
 include '../koneksi.php';
-include '../dao/auth.php';
 
 $koneksi=new koneksi();
 $koneksi->konek();
 $koneksi->konekDb();
-$auth=new auth();
-$auth->login_member();
 
+if(isset($_POST['batal']))
+{
+	header("Location: home_guest.php");	
+}
 if(isset($_POST["MM_login"])){
 	if($_POST["email"]=="" || $_POST["password"]=="" ){
-		echo "<script>alert('Silahkan isikan Email dan Password terlebih dahulu!');</script>";}
-		else {
+		echo "<script>alert('Silahkan isikan Email dan Password terlebih dahulu!');</script>";
+	}else {
 				$user = new User();
 				$user->email=$_POST["email"];
 				$user->password=$_POST["password"];
 				$User_Dao=new User_Dao();
 				if($User_Dao->cek_user($user)==false){
 					echo"<script>alert('Email dan Password tidak sesuai!');</script>";
-				}
-					if($nama->role=="user"){
-						//echo '2';
+				}else
+				{
+					$user_login=$User_Dao->get_akses($user);
+					if($user_login->akses=="user"){
 						$Member_Dao=new Member_Dao();
 						$member=$Member_Dao->get_id($nama->id);
+						echo $user->id;
 						session_start();
 						$_SESSION['MM_Username'] = $member->nama;
-						$_SESSION['MM_Id'] = $member->id;
+						$_SESSION['MM_Id'] = $user->id;
 						$_SESSION['MM_Email'] = $email;
-						header ("Location:$home_user.php");
+						header("Location: home_user.php");
 					}
-				} 
+				}
+	} 
 }	
 ?>
 
@@ -39,7 +43,7 @@ if(isset($_POST["MM_login"])){
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign in &middot; Twitter Bootstrap</title>
+    <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -98,21 +102,18 @@ if(isset($_POST["MM_login"])){
 
     <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" method="post" action="login_form_umum.php">
         <h2 class="form-signin-heading">LOGIN</h2>
         <p>
-          <input type="text" class="input-block-level" placeholder="Email address">
-          <input type="password" class="input-block-level" placeholder="Password">
-          <label class="checkbox">
-            <br>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
+	      <input type="hidden" name="login_terakhir" value=<?php echo date("Y-m-d"); ?>>
+          <input type="text" name="email" class="input-block-level" placeholder="Email address">
+          <input type="password" name="password"  class="input-block-level" placeholder="Password">
         </p>
-        <button class="btn btn-large btn-primary" type="submit">Masuk</button>
-        <button class="btn btn-large btn-primary" type="submit">Batal</button>
+        <button class="btn btn-large btn-primary" name="MM_login" type="submit">Masuk</button>
+        <button class="btn btn-large btn-primary" name="batal" type="submit">Batal</button>
          <div class="controls">
-                                        <a href="file:///H|/php/register.php" >daftar&nbsp;&nbsp;&nbsp;</a>
-                                        <a href="file:///H|/php/lupa_password.php" >lupa password ? </a>
+                                        <a href="registrasi.php">daftar&nbsp;&nbsp;&nbsp;</a>
+                                        <a href="lupa_password.php" >lupa password ? </a>
                         </div>
       </form>
 
