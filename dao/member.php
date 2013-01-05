@@ -25,7 +25,8 @@ class Member_Dao
 			{
 			
 				$member = new Member();
-				$member->id = $row['ID'];
+				$member->id_member = $row['ID_MEMBER'];
+				$member->id_user = $row['ID_USER'];
 				$member->nama= $row['NAMA'];
 				$member->alamat = $row['ALAMAT'];
 				$member->telepon = $row['TELEPON'];
@@ -57,7 +58,8 @@ class Member_Dao
 			{
 				
 				$member = new Member();
-				$member->id = $row['ID'];
+				$member->id_member = $row['ID_MEMBER'];
+				$member->id_user = $row['ID_USER'];
 				$member->nama= $row['NAMA'];
 				$member->alamat = $row['ALAMAT'];
 				$member->telepon = $row['TELEPON'];
@@ -73,9 +75,9 @@ class Member_Dao
 	{
 		$sql="insert 
 		into 
-		member
+		member(ID_USER,NAMA,ALAMAT,TELEPON,AGAMA,JENIS_KELAMIN,TANGGAL_DAFTAR)
 		values(
-		'$member->id',
+		'$member->id_user',
 		'$member->nama',
 		'$member->alamat', 
 		'$member->telepon', 
@@ -97,7 +99,7 @@ class Member_Dao
 		TELEPON='$member->telepon',
 		AGAMA='$member->agama',
 		JENIS_KELAMIN='$member->jenis_kelamin'
-		where ID='$member->id'
+		where ID_MEMBER='$member->id_member'
 		";
 		$query=mysql_query($sql);
 	}
@@ -108,7 +110,7 @@ class Member_Dao
 		into 
 		member
 		values(
-		'$member->id')
+		'$member->id_member')
 		";
 		$query=mysql_query($sql);
 	}
@@ -117,7 +119,8 @@ class Member_Dao
 
 class Member
 {
-	var $id;
+	var $id_member;
+	var $id_user;
 	var $nama;
 	var $alamat;
 	var $telepon;
