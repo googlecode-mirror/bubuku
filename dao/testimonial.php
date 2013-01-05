@@ -1,7 +1,7 @@
 <?php
 
 
-class Testi_Dao{
+class Testimonial_Dao{
 
 	function __construct()
 	{
@@ -66,7 +66,7 @@ class Testi_Dao{
 	{
 		$sql="insert 
 		into 
-		testimonial
+		testimonial(ID_TESTI,STATUS_TESTI,TANGGAL_TESTI,TESTI)
 		values(
 		'$testimonial->id_testi',
 		'$testimonial->status_testi',
