@@ -64,7 +64,7 @@ class Saran_Dao{
 	{
 		$sql="insert 
 		into 
-		saran
+		saran(ID_SARAN, SARAN, TANGGAL_SARAN)
 		values(
 		'$saran->id_saran',
 		'$saran->saran',
