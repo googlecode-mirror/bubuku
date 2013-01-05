@@ -1,21 +1,10 @@
-<?php
-include '../koneksi.php';
-include '../dao/auth.php';
-
-$koneksi=new koneksi();
-$koneksi->konek();
-$koneksi->konekDb();
-$auth=new auth();
-$auth->cek_sesi();
-
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home User</title>
+    <title>Hubungi Kami</title>
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
    
      <!-- Le styles -->
@@ -27,7 +16,7 @@ $auth->cek_sesi();
     </style>
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 <body background="img/blue.jpg">
-<div class="User">
+<div class="user">
 <h1><font color="#FF0000">BUBUKU</h1></div></font>
 <!-- memuat menu -->
    <div class="navbar navbar">
@@ -90,9 +79,8 @@ $auth->cek_sesi();
     
     <div class="span4 offset4" align="right">
     <ul class="nav">
-    <li><a href="profil.php">My Profile</a></li>
-	<li><a href="order.php">Daftar Belanja</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <li><a href="login_form_umum.php">Login</a></li>
+    <li><a href="registrasi.php">Daftar</a></li>
           <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
     <!-- Bootstrap jQuery plugins compiled and minified -->
@@ -115,11 +103,10 @@ $auth->cek_sesi();
 Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <span class="style29">SELAMAT BERBELANJA</span></marquee>
 </td></tr></table>
 </td></tr></table></ul>
-
     <!-- end .header --></div>
   <div class="container">
   <div class="sidebar1">
-    <div class="intro">
+  <div class="intro">
     <p><font face=tahoma size=2><span id="date"></span> <span id="clock"></span></font></p>
     <form method="POST" action="?menu=tcari"> 
       <!-- form pencarian -->
@@ -128,58 +115,104 @@ Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <
         <input type="submit" value="Go" />
       </div>
     </form>
-  	
-        <a href="#"><img src="img/logo.jpg" alt="aaa" name="Insert_logo" width="220x" height="90px" id="Insert_logo" style="background-color: #8090AB; display:block;" /></a> 
+   	</div>
+    <div class="container-fluid">
+        <a href="#"><img src="img/logo.jpg" alt="aaa" name="Insert_logo" width="259x" height="90px" id="Insert_logo" style="background-color: #8090AB; display:block;" /></a> 
 
         <div class="row-fluid">
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-		<li class="navbar">Kategori</li>
+<li class="nav-header">Kategori</li>
               
         <li class="active"><a href="#">Agama & filsafat</a></li>
-
         <li class="active"><a href="#">Bahasa</a></li>
         <li class="active"><a href="#">Buku Anak &amp; Remaja</a></li>
         <li class="active"><a href="#">Buku Impor</a></li>
         <li class="active"><a href="#">Buku Sekolah</a></li>
         <li class="active"><a href="#">Ekonomi</a></li>
-
         <li class="active"><a href="#">Hobi &amp; Interest</a></li>
         <li class="active"><a href="#">Hukum</a></li>
         <li class="active"><a href="#">Kedokteran</a></li>
         <li class="active"><a href="#">Kesehatan</a></li>
         <li class="active"><a href="#">Kesekretariatan</a></li>
-
         <li class="active"><a href="#">Wanita</a></li>
         <li class="active"><a href="#">Komputer</a></li>
         <li class="active"><a href="#">Majalah</a></li>
         <li class="active"><a href="#">Manajemen &amp; Bisnis</a></li>
         <li class="active"><a href="#">Pariwisata &amp; Peta</a></li>
-
         <li class="active"><a href="#">Pengembangan Diri dan Karir</a></li>
         <li class="active"><a href="#">Pertanian</a></li>
         <li class="active"><a href="#">Psikologi &amp; Pendidikan</a></li>
         <li class="active"><a href="#">Referensi &amp; Kamus</a></li>
         <li class="active"><a href="#">Sastra &amp; Novel</a></li>
-
         <li class="active"><a href="#">Sosial Politik</a></li>
         <li class="active"><a href="#">Teknik</a></li>
 	</div>
     <!-- end .sidebar1 --></div>
-<div class="container">
-  <div class="content">
+
+ 			 <div class="content">
+             <div class="span8">
+               <center>
+               <font color="#FF0000">
+                  <h1><b>Hubungi Kami</b></h1>
+                  <br>
+				  <br>
+				  <b>Anda dapat menghubungi kami pada kanal-kanal berikut:</b>
+
+                  <table width="200">
+  <tr>
+    <td><img src="img/ym.png" width="200px" height="200px"/><center>bubuku</center></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>            
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>                
+    <td><img src="img/gtalk.png" width="200px" height="200px"/><center>bubuku@gmail.com</center></td>
+  </tr>
+  <tr>
+    <td><img src="img/email.jpg" width="200px" height="200px"/><center>bubuku@gmail.com</center></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>            
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>                
+    <td><img src="img/blackberry.jpg" width="200px" height="200px"/><center>216ee15a</center></td>
+  </tr>
+  <tr>
+    <td><img src="img/twitter.png" width="200px" height="200px"/><center>@bubuku</center></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>            
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>    
+    <td>&nbsp;</td>                
+    <td><img src="img/facebook.png" width="200px" height="200px"/><center>bubuku</center></td>
+  </tr>
+</table>
+</font>
+</center>
+</div>
 </div>
     <!-- end .content --></div>
   <div class="sidebar2">
+
     <!-- end .sidebar2 --></div>
   <div class="footer">
     <table align=center cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
-	<table width=880><tr><td>
-	<marquee><font face=tahoma size=2 color=#FFFFFF><span class="style29">@Kelompok 5-RBPL A</span> 
-	</marquee>
-	</td></tr></table>
-	</td></tr></table>
+<table width=880><tr><td>
+<marquee><font face=tahoma size=2 color=#FFFFFF><span class="style29">@Kelompok 5-RBPL A</span> 
+</marquee>
+</td></tr></table>
+</td></tr></table>
     <!-- end .footer --></div>
   <!-- end .container --></div>
 </body>

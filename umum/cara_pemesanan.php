@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>home guest</title>
+    <title>Cara Pemesanan</title>
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
    
      <!-- Le styles -->
@@ -57,20 +57,26 @@
   </ul>
     </li>
 <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="cara_pemesanan.php">Cara Pemesanan
-        </a>
-    </li>
-<li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">lainnya
       </a>
         <ul class="dropdown-menu">
-            <li><a href="kritik_saran.php">Kritik dan Saran</a></li>
+            <li><a href="kritik.php">Kritik</a></li>
+            <li><a href="saran.php">Saran</a></li>
             <li><a href="testi.php">Testimonial</a></li>
             <li><a href="wishlist.php">Wishlist</a></li>
             <li><a href="menawarkan_buku.php">Menawarkan Buku</a></li>
-            <li><a href="hubungi.php">Hubungi Kami</a></li>
         </ul>
     </li>
+<li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tentang Kami
+      </a>
+        <ul class="dropdown-menu">
+            <li><a href="tentang.php">Tentang Bubuku</a></li>
+            <li><a href="cara_pemesanan.php">Cara Pemesanan</a></li>
+            <li><a href="hubungi.php">Hubungi Kami</a></li>
+        </ul>
+    </li>    
+    
   <div class="span4 offset4" align="right">
     <ul class="nav">
     <li><a href="login_form_umum.php">Login</a></li>
@@ -91,9 +97,9 @@
 
 <div class="container">
 <div class="header">
-  <table align=center border=1 cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
+  <table align=center cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
 <table width=880><tr><td>
-<marquee><font face=tahoma size=2 color=#FFFFFF>Selamat Datang di <span class="style29">Website Kami!</span> 
+<marquee><font face=tahoma size=2 color="#FF0000">Selamat Datang di <span class="style29">Website Kami!</span> 
 Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <span class="style29">SELAMAT BERBELANJA</span></marquee>
 </td></tr></table>
 </td></tr></table></ul>
@@ -120,38 +126,34 @@ Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <
 <li class="nav-header">Kategori</li>
               
         <li class="active"><a href="#">Agama & filsafat</a></li>
-
         <li class="active"><a href="#">Bahasa</a></li>
         <li class="active"><a href="#">Buku Anak &amp; Remaja</a></li>
         <li class="active"><a href="#">Buku Impor</a></li>
         <li class="active"><a href="#">Buku Sekolah</a></li>
         <li class="active"><a href="#">Ekonomi</a></li>
-
         <li class="active"><a href="#">Hobi &amp; Interest</a></li>
         <li class="active"><a href="#">Hukum</a></li>
         <li class="active"><a href="#">Kedokteran</a></li>
         <li class="active"><a href="#">Kesehatan</a></li>
         <li class="active"><a href="#">Kesekretariatan</a></li>
-
         <li class="active"><a href="#">Wanita</a></li>
         <li class="active"><a href="#">Komputer</a></li>
         <li class="active"><a href="#">Majalah</a></li>
         <li class="active"><a href="#">Manajemen &amp; Bisnis</a></li>
         <li class="active"><a href="#">Pariwisata &amp; Peta</a></li>
-
         <li class="active"><a href="#">Pengembangan Diri dan Karir</a></li>
         <li class="active"><a href="#">Pertanian</a></li>
         <li class="active"><a href="#">Psikologi &amp; Pendidikan</a></li>
         <li class="active"><a href="#">Referensi &amp; Kamus</a></li>
         <li class="active"><a href="#">Sastra &amp; Novel</a></li>
-
         <li class="active"><a href="#">Sosial Politik</a></li>
         <li class="active"><a href="#">Teknik</a></li>
 	</div>
-    </div>
     <!-- end .sidebar1 --></div>
-  <div class="content">
-  <div class="topbox">
+
+ 			 <div class="content">
+             <div class="span6" align="justify">
+             <font color="#FF0000">
                   <h1><b>Cara Pemesanan</b></h1>
                   <br>
 				  <br>
@@ -166,15 +168,15 @@ Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <
                     <li> Setelah verifikasi silahkan lakukan pembayaran melalui nomor rekening yang kami berikan.</li>
                     <li> Setelah anda melakukan pembayaran silahkan menghubungi kami pada kanal-kanal yang tersedia.</li>                    <li> Barang akan kami kirim setelah kami menerima pembayaran anda.</li>                   
                     <li> Nomor resi pengiriman akan kami informasikan maksimal 24 jam setelah pengiriman dilakukan.</li>                   </ul>
-			
+                    </font>
 </div>
-
+</div>
     <!-- end .content --></div>
   <div class="sidebar2">
 
     <!-- end .sidebar2 --></div>
   <div class="footer">
-    <table align=center border=1 cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
+    <table align=center cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
 <table width=880><tr><td>
 <marquee><font face=tahoma size=2 color=#FFFFFF><span class="style29">@Kelompok 5-RBPL A</span> 
 </marquee>
