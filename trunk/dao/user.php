@@ -66,13 +66,43 @@ class User_Dao
 		return $user;
 	}
 	
+	function get_akses(User $user)
+	{
+		
+		$password = $user->password;
+		$email=$user->email;
+		$sql="
+		select *
+		from user where email='$email' and password='$password'
+		";
+		
+		$user=false;		
+		$data = mysql_query($sql);
+		if($data){
+			while($row = mysql_fetch_assoc($data))
+			{
+				
+				$user = new User();
+				
+				$user->id = $row['ID'];
+				$user->email = $row['EMAIL'];
+				$user->password = $row['PASSWORD'];
+				$user->akses = $row['AKSES'];
+				$user->login_terakhir = $row['LOGIN_TERAKHIR'];
+				
+			}
+		}	
+		return $user;
+	}
+	
 	function add(User $user)
 	{
 		$sql="
 		insert 
 		into 
-		user
-		values('',
+		user(ID, EMAIL, PASSWORD, AKSES)
+		values(
+		'$user->id',
 		'$user->email',
 		'$user->password',
 		'$user->akses')
@@ -104,17 +134,18 @@ class User_Dao
 		$query=mysql_query($sql);
 	}
 	
-	function cek_user($email,$password)
+	function cek_user(User $user)
 	{
-		$password = md5($password);
-		$result=mysql_query("select id from user where EMAIL='$email' and PASSWORD='$password'");
+		$password = $user->password;
+		$email=$user->email;
+		$result=mysql_query("select id from user where email='$email' and password='$password'");
 		$user_data=mysql_fetch_array($result);
 		$no_rows=mysql_num_rows($result);
 
 		if ($no_rows == 1)
 		{
-			$_SESSION['login'] = true;
-            $_SESSION['id'] = $user_data['id'];
+			//$_SESSION['login'] = true;
+            //$_SESSION['id'] = $user_data['id'];
             return TRUE;		
 			}
 		else
