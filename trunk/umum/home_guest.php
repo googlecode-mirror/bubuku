@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>home guest</title>
+    <title>Home Guest</title>
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
    
      <!-- Le styles -->
@@ -57,25 +57,31 @@
   </ul>
     </li>
 <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="cara_pemesanan.php">Cara Pemesanan
-        </a>
-    </li>
-<li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">lainnya
       </a>
         <ul class="dropdown-menu">
-            <li><a href="kritik_saran.php">Kritik dan Saran</a></li>
+            <li><a href="kritik.php">Kritik</a></li>
+            <li><a href="saran.php">Saran</a></li>
             <li><a href="testi.php">Testimonial</a></li>
             <li><a href="wishlist.php">Wishlist</a></li>
             <li><a href="menawarkan_buku.php">Menawarkan Buku</a></li>
-            <li><a href="hubungi.php">Hubungi Kami</a></li>
         </ul>
     </li>
-  <div class="span4 offset4" align="right">
+<li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tentang Kami
+      </a>
+        <ul class="dropdown-menu">
+            <li><a href="tentang.php">Tentang Bubuku</a></li>
+            <li><a href="cara_pemesanan.php">Cara Pemesanan</a></li>
+            <li><a href="hubungi.php">Hubungi Kami</a></li>
+        </ul>
+    </li>  
+           
+    <div class="span4 offset4" align="right">
     <ul class="nav">
     <li><a href="login_form_umum.php">Login</a></li>
-    <li><a href="registrasi.php">Daftar</a></li>
-          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <li><a href="registrasi.php">Daftar</a></li>          
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
     <!-- Bootstrap jQuery plugins compiled and minified -->
     <script src="js/bootstrap.min.js"></script>
@@ -91,9 +97,9 @@
 
 <div class="container">
 <div class="header">
-  <table align=center border=1 cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
+  <table align=center cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
 <table width=880><tr><td>
-<marquee><font face=tahoma size=2 color=#FFFFFF>Selamat Datang di <span class="style29">Website Kami!</span> 
+<marquee><font face=tahoma size=2 color="#FF0000">Selamat Datang di <span class="style29">Website Kami!</span> 
 Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <span class="style29">SELAMAT BERBELANJA</span></marquee>
 </td></tr></table>
 </td></tr></table></ul>
@@ -157,7 +163,7 @@ Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <
 
     <!-- end .sidebar2 --></div>
   <div class="footer">
-    <table align=center border=1 cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
+    <table align=center cellpadding=0 cellspacing=0 width=100%><tr><td align=center height=31>
 <table width=880><tr><td>
 <marquee><font face=tahoma size=2 color=#FFFFFF><span class="style29">@Kelompok 5-RBPL A</span> 
 </marquee>
