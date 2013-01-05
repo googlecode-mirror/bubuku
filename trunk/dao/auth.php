@@ -63,14 +63,18 @@ class auth
 	
 	public function cek_sesi()
 	{
-		if (!isset($_SESSION['MM_Nama_user'])){
-			header("Location:login_form_umum.php");
+		if (!isset($_SESSION['MM_Username'])){
+		}
+		else{
+			header("Location:home_guest.php");
 		}
 	}
 	
 	public function logout()
 	{
+		session_unset();
 		session_destroy();
+		header("Location: home_guest.php");
 	
 	}
 	
