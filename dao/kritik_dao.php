@@ -64,7 +64,7 @@ class Kritik_Dao{
 	{
 		$sql="insert 
 		into 
-		kritik
+		kritik(ID_KRITIK, KRITIK, TANGGAL_KRITIK)
 		values(
 		'$kritik->id_kritik',
 		'$kritik->kritik',
