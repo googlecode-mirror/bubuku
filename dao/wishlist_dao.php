@@ -122,8 +122,9 @@ class Wishlist_Dao
 	{
 		$sql="insert 
 		into 
-		wishlist
+		wishlist(ID, NAMA_WISHLIST, PENERBIT_WISHLIST, TAHUN_CETAK_WISHLIST, DESKRIPSI_WISHLIST, BATAS_WAKTU)
 		values(
+		'$wishlist->id',
 		'$wishlist->nama_wishlist',
 		'$wishlist->penerbit_wishlist',
 		'$wishlist->tahun_cetak_wishlist',
