@@ -47,7 +47,38 @@ class Member_Dao
 		from
 		member
 		WHERE
-		ID = '".$id."'
+		ID_MEMBER = '".$id."'
+		";
+		
+		$member=false;		
+		$data = mysql_query($sql);
+		if($data)
+		{
+			while($row = mysql_fetch_assoc($data))
+			{
+				
+				$member = new Member();
+				$member->id_member = $row['ID_MEMBER'];
+				$member->id_user = $row['ID_USER'];
+				$member->nama= $row['NAMA'];
+				$member->alamat = $row['ALAMAT'];
+				$member->telepon = $row['TELEPON'];
+				$member->agama = $row['AGAMA'];
+				$member->jenis_kelamin = $row['JENIS_KELAMIN'];
+				$member->tanggal_daftar = $row['TANGGAL_DAFTAR'];
+			}
+		}	
+		return $member;
+	}
+	
+	function get_id_member($id)
+	{
+		$sql="
+		select *
+		from
+		member
+		WHERE
+		ID_USER = '".$id."'
 		";
 		
 		$member=false;		
