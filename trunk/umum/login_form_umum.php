@@ -1,6 +1,7 @@
 <?php
 include '../dao/user.php';
 include '../dao/member.php';
+include '../dao/auth.php';
 include '../koneksi.php';
 
 $koneksi=new koneksi();
@@ -9,22 +10,23 @@ $koneksi->konekDb();
 
 if(isset($_POST['batal']))
 {
-	header("Location: home_guest.php");	
+	header("Location:home_guest.php");	
 }
-if(isset($_POST["MM_login"])){
-	if($_POST["email"]=="" || $_POST["password"]=="" ){
-		echo "<script>alert('Silahkan isikan Email dan Password terlebih dahulu!');</script>";
-	}else {
+if(isset($_POST['MM_login'])){
+		if($_POST['email']=="" || $_POST['password']=="" ){
+			echo "<script>alert('Silahkan isikan Email dan Password terlebih dahulu!');</script>";
+		}else{
 				$user = new User();
-				$user->email=$_POST["email"];
-				$user->password=$_POST["password"];
-				$User_Dao=new User_Dao();
-				if($User_Dao->cek_user($user)==false){
-					echo"<script>alert('Email dan Password tidak sesuai!');</script>";
+				$user->email=$_POST['email'];
+				$user->password=$_POST['password'];
+				//$User_Dao=new User_Dao();
+				
+				/**if(empty($_POST["email"]) || empty($_POST["password"])){
+					echo"<script>alert('Email dan Password tidak boleh kosong!');</script>";
 				}else
-				{
-					$user_login=$User_Dao->get_akses($user);
-					if($user_login->akses=="user"){
+				{**/
+					//$user_login=$User_Dao->get_akses($user);
+					/**if($user_login->akses=="user"){
 						$Member_Dao=new Member_Dao();
 						$member=$Member_Dao->get_id($nama->id);
 						echo $user->id;
@@ -33,10 +35,13 @@ if(isset($_POST["MM_login"])){
 						$_SESSION['MM_Id'] = $user->id;
 						$_SESSION['MM_Email'] = $email;
 						header("Location: home_user.php");
-					}
-				}
-	} 
-}	
+					}**/
+					
+					$auth2=new auth();
+					$auth2->login_member($_POST['email'],$_POST['password']);
+				//}
+		}
+}
 ?>
 
 <!DOCTYPE html>
