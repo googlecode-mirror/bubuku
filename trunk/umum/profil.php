@@ -4,17 +4,26 @@ include '../dao/member.php';
 include '../dao/user.php';
 include '../dao/auth.php';
 
+
+if(isset($_POST['kembali']))
+{
+	header("Location:home_user.php");	
+}
+
 $koneksi=new koneksi();
 $koneksi->konek();
 $koneksi->konekDb();
 $auth = new auth();
 $auth->cek_sesi();
+$id_user=$_SESSION['MM_Id'];
+$member_sesi = new Member();
 $member = new Member();
 $member_dao = new Member_Dao();
-$member_dao->get_all();
+$member_sesi=$member_dao->get_id_member($id_user);
+$member=$member_dao->get_id($member_sesi->id_member);
 $user = new User();
 $user_dao = new User_Dao();
-$user_dao->get_all()
+$user=$user_dao->get_id($member->id_user)
 
 ?>
 
@@ -36,7 +45,7 @@ $user_dao->get_all()
     
   </head>
 
-  <body background="img/slidedoorp.jpg">
+  <body background="img/admin.jpg">
   <!--membuat top menu -->
   <div class="navbar">
   	<div class="navbar-inner">
@@ -86,7 +95,10 @@ $user_dao->get_all()
 				<dt>Agama :</dt>
 				<dd><?php  echo $member->agama; ?></dd>
 			</div>
+            <br>
+            <br>
 		</div><!--end of cid content-->	
+        <button class="btn btn-primary" type="submit" name="kembali">Kembali ke Menu Utama<a href="home_user.php"></a></button>
 	</div><!--end of id wrapper-->
     <!-- membuat conten tengah yaitu sign up -->
     
