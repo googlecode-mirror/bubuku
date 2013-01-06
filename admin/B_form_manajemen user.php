@@ -1,3 +1,25 @@
+<?php
+include '../koneksi.php';
+include '../dao/member.php';
+include '../dao/user.php';
+include '../dao/auth.php';
+
+$koneksi=new koneksi();
+$koneksi->konek();
+$koneksi->konekDb();
+$auth = new auth();
+$auth->cek_sesi();
+$member_sesi = new Member();
+$member = new Member();
+$member_dao = new Member_Dao();
+$data=$member_dao->get_all();
+
+if(isset($_POST['logout']))
+{
+	$auth->logout();
+}
+?>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -19,11 +41,11 @@
 <!-- memuat menu -->
 <div class="navbar navbar">
 <div class="navbar-inner">
-<a class="brand" href="A_form_admin.html">Admin</a>
+<a class="brand" href="A_form_admin.php">Admin</a>
 <ul class="nav">
   <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pengguna </a>
     <ul class="dropdown-menu">
-      <li><a href="#">Validasi User</a></li>
+      <li><a href="#">Manajemen User</a></li>
       <li><a href="#">Laporan User</a></li>
     </ul>
   </li>
@@ -65,30 +87,59 @@
     <div class="modal-footer">
       <button class="btn" data-dismiss="modal" aria-hidden="true">Tidak</button>
       <a href="A3_logout.php">
-      <button class="btn btn-primary">Iya</button>
+      <button class="btn btn-primary" name="logout">Iya</button>
       </a></div>
   </div>
 </div>
 </div>
-<div class="container-fluid" align="left">
-<table width="1096" border="1" align="center">
-  <tr id="1">
-    <td width="100"><div class="text-info">
-        <h2 align="left">ID User</h2>
-      </div></td>
-    <td width="100"><div class="text-info">
-      <h2 align="left"> Email User</h2></td>
-    <td width="100"><div class="text-info">
-      <h2 align="left">Password</h2></td>
-    <td width="100"><div class="text-info">
-      <h2 align="left">Hak Akses</h2></td>
-    <td width="100"><div class="text-info">
-      <h2 align="left">Login Terakhir</h2></td>
-    <td width="200"></td>
-  </tr>
-  </div>
-  
-</table>
+<div class="topbox">
+                  <h2><p align="center" class="style1 style5">Daftar Member</p></h2>
+<p><span class="style6"><font color="#FF0000">Jumlah Member:<?php echo count($data);?> </span><br></font>    
+                                  </p>
+<table width="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF">
+                    <tr>
+                    <th width="20"><span class="style4">No</span></th>
+                      <th width="150"><span class="style4">Nama</span></th>
+                      <th width="400"><span class="style4">Alamat</span></th>
+                      <th width="200"><span class="style4">E-mail</span></th>
+                      <th width="100"><span class="style4">Telepon</span></th>
+                      <th width="94"><span class="style4">Agama</span></th>
+                      <th width="94"><span class="style4">Jenis Kelamin</span></th>
+                      <th width="100"><span class="style4">Hak Akses</span></th>                  
+                      <th width="98">&nbsp;</th>
+                    </tr>
+                    
+                  <?php
+				  $i=1;
+				  foreach ($data as $member) {
+				  $User_Dao=new User_Dao();
+				  $user=$User_Dao->get_id($member->id_member);
+				  
+				  ?>
+             
+                    <tr>
+                    <td><span class="style3"><?php echo $i;?></span></td>
+                      <td><span class="style3"><?php echo $member->nama;?></span></td>
+                      <td><span class="style3"><?php echo $member->alamat;?></span></td>
+                      <td><span class="style3"><?php echo $user->email;?></span></td>
+                      <td><span class="style3"><?php echo $member->telepon;?></span></td>
+                      <td><span class="style3"><?php echo $member->agama;?></span></td>
+                      <td><span class="style3"><?php echo $member->jenis_kelamin;?></span></td>
+                      <td><span class="style3"><?php echo $user->akses;?></span></td>
+                      <td><?php echo "<a href=\"B2_form_manajemen user_edit.php?id=$member->id_member\">";
+					  echo "Edit Member</a> ";?></td>
+                      
+                    </tr>
+                    <?php $i++;}?>
+    </table>
+
+                  <p><br> 				  
+    </p>
+</div> 
+</div>
+          
+<div class="clear"></div>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
 <!-- Bootstrap jQuery plugins compiled and minified -->

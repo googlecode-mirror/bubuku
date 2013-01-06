@@ -1,3 +1,33 @@
+<?php
+include '../dao/user.php';
+include '../dao/member.php';
+include '../dao/auth.php';
+include '../koneksi.php';
+
+$koneksi=new koneksi();
+$koneksi->konek();
+$koneksi->konekDb();
+
+if(isset($_POST['batal']))
+{
+	header("Location:A0_login_admin.php");	
+}
+
+if(isset($_POST['MM_login'])){
+		if($_POST['email']=="" || $_POST['password']=="" ){
+			echo "<script>alert('Silahkan isikan Email dan Password terlebih dahulu!');</script>";
+		}else{
+				$user = new User();
+				$user->email=$_POST['email'];
+				$user->password=$_POST['password'];
+					
+					$auth2=new auth();
+					$auth2->login_member($_POST['email'],$_POST['password']);
+					//header("Location:/bubuku/admin/A_form_admin.php");
+		}
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +59,7 @@ body {
     <!--side bar -->
     <!--konten utama -->
     <div class="span4 offset8">
-      <form action="cek_login.php" method="POST">
+      <form action="A0_login_admin.php" method="POST">
         <p>
         <font color="#000000">
         <h2>Selamat Datang di bubuku</h2>
@@ -48,9 +78,9 @@ body {
             <td bgcolor="#FFFFFF"></td>
           <tr>
             <td bgcolor="#FFFFFF"></td>
-            <td width="83" height="35" bgcolor="#FFFFFF">Username</td>
+            <td width="83" height="35" bgcolor="#FFFFFF">Email</td>
             <td width="8" bgcolor="#FFFFFF">:</td>
-            <td width="87" bgcolor="#FFFFFF"><input type="text" name="username" size="30"></td>
+            <td width="87" bgcolor="#FFFFFF"><input type="text" name="email" size="30"></td>
             <td bgcolor="#FFFFFF"></td>
           </tr>
           <tr>
@@ -72,9 +102,9 @@ body {
             <td bgcolor="#FFFFFF">&nbsp;</td>
             <td bgcolor="#FFFFFF">&nbsp;</td>
             <td bgcolor="#FFFFFF"><a href="form_admin.php">
-              <button class="btn btn-primary">Login</button>
+              <button class="btn btn-primary" name="MM_login">Login</button>
               </a>
-              <button class="btn btn-warning" type="button" value="Cancel" onClick="window.location.href='#homeutama.php'">Cancel</button></td>
+              <button class="btn btn-warning" type="button" name="batal">Batal</button></td>
             <td bgcolor="#FFFFFF"></td>
           </tr>
           <tr>

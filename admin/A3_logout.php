@@ -22,7 +22,7 @@
   	<div class="navbar-inner">
     	<div class="span2 offset11" align="right">
     <ul class="nav">
-     <li><a href="login_form.php">Have an account? Sign In</a></li>
+     <li><a href="A0_login_admin.php">Have an account? Sign In</a></li>
            <!--membuat top menu -->
 
   	<!-- membuat conten tengah yaitu messae logout -->

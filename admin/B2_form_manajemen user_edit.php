@@ -1,3 +1,50 @@
+<?php
+include '../koneksi.php';
+include '../dao/member.php';
+include '../dao/user.php';
+include '../dao/auth.php';
+
+$koneksi=new koneksi();
+$koneksi->konek();
+$koneksi->konekDb();
+$auth = new auth();
+$auth->cek_sesi();
+$member_sesi = new Member();
+$member = new Member();
+$user=new User();
+
+if(ISSET($_POST['rubah_profil'])){
+echo $user->email($_POST['email']);
+echo $user->akses($_POST['akses']);
+echo $member->nama($_POST['nama']);
+echo $member->alamat($_POST['alamat']);
+echo $member->telepon($_POST['telepon']);
+echo $member->agama($_POST['agama']);
+echo $member->jenis_kelamin($_POST['jenis_kelamin']);
+echo $user->password($_POST['password']);
+
+$member_dao = new Member_Dao();
+$user_dao = new User_Dao();
+$user_dao->edit_email();
+$user_dao->edit_pass();
+$user_dao->edit_akses();
+$member_dao->edit();
+
+echo "<meta http-equiv=\"refresh\" content=\"0;url=B_form_manajemen user.php\">";
+exit(1);
+}
+
+if(ISSET($_GET['id'])){
+$Member_Dao=new Member_Dao();
+$data=$Member_Dao->get_id($_GET['id']);
+}
+
+if(isset($_POST['logout']))
+{
+	$auth->logout();
+}
+?>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -19,12 +66,11 @@ body {
 <!-- memuat menu -->
 <div class="navbar navbar">
 <div class="navbar-inner">
-<a class="brand" href="form_admin.html">Admin</a>
+<a class="brand" href="form_admin.php">Admin</a>
 <ul class="nav">
 <li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">Pengguna </a>
   <ul class="dropdown-menu">
-    <li><a href="#">Validasi User</a></li>
-    <li><a href="#">Hapus User</a></li>
+    <li><a href="B_form_manajemen user.php">Manajemen User</a></li>
     <li><a href="#">Laporan User</a></li>
   </ul>
 </li>
@@ -89,7 +135,7 @@ body {
         <div class="modal-footer">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Tidak</button>
           <a href="logout.php">
-          <button class="btn btn-primary">Iya</button>
+          <button class="btn btn-primary" name="logout">Iya</button>
           </a></div>
       </div>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -103,7 +149,7 @@ body {
  <!--konten utama -->
         		<div class="span8 offset1">
             		<form action="#" method="POST">
-                        <b><h2><font color="#000099">Profil Admin</font></h2></b><br>
+                        <b><h2><font color="#000099">Edit Member</font></h2></b><br>
                         <table width="1000" border="0" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
                           <tr>
                             <td width="140" bgcolor="#FFFFFF">
@@ -118,9 +164,9 @@ body {
                                 <td width="20px" height="10px">><div class="hero-unit"><center><img src="img/home1.jpg"></center></td>
                               </tr>
                               <tr>
-                                <td width="73" height="35">Username</td>
+                                <td width="73" height="35">Nama</td>
                                 <td width="4">:</td>
-                                <td width="212"><input type="text" name="username" size="30"></td>
+                                <td width="212"><input type="text" name="nama" size="30"></td>
                                 <td width="4">&nbsp;</td>
                                 <td width="149">Email</td>
                                 <td width="8">:</td>
@@ -136,11 +182,28 @@ body {
                                 <td><input type="text" name="Alamat" size="60"></td>
                               </tr>
                               <tr>
+                                <td height="31">Agama</td>
+                                <td>:</td>
+                                <td><input type="text" name="agama" size="30"></td>
+                                <td>&nbsp;</td>
+                                <td>Jenis Kelamin</td>
+                                <td>:</td>
+                                <td><input type="text" name="jenis_kelamin" size="60"></td>
+                              </tr>                              
+                              <tr>
+                                <td height="31">Hak Akses</td>
+                                <td>:</td>
+                                <td><input type="text" name="akses" size="30"></td>
+                                <td>&nbsp;</td>
+                                <td>Password</td>
+                                <td>:</td>
+                                <td><input type="text" name="password" size="60"></td>
+                              </tr>                                                            
+                              <tr>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
-                                <td><button class="btn btn-primary" type="button" value="Ubah profil">Ubah Password</button></td>
-                                <td><button class="btn btn-primary" type="button" value="Ubah profil">Ubah Profil</button></td>
+                                <td><button class="btn btn-primary" type="button" value="Ubah profil" name="rubah_profil">Ubah Profil</button></td>
                               </tr>
                               <tr>
                                 <td height="54">&nbsp;</td>
