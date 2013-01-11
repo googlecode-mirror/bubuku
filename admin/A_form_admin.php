@@ -25,15 +25,16 @@
       </a>
         <ul class="dropdown-menu">
             <li><a href="../../xampp/htdocs/admin/B_form_manajemen user.php">Manajemen User</a></li>
-            <li><a href="#">Laporan User</a></li>
+            <li><a href="../../xampp/htdocs/admin/B_form_laporan user.php">Laporan User</a></li>
+			<li><a href="../../xampp/htdocs/admin/B_form_manajemen user edit.php">Edit User</a></li>
         </ul>
   </li>
        <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Toko
         </a>
         <ul class="dropdown-menu">
-            <li><a href="#">Lihat Toko</a></li>
-            <li><a href="#">Ubah Data Toko</a></li>
+            <li><a href="../../xampp/htdocs/admin/B_form_manajemen toko.php">Lihat Toko</a></li>
+            <li><a href="../../xampp/htdocs/admin/B_form_manajemen toko edit.php">Ubah Status Toko</a></li>
             <li><a href="#">Tambah Toko</a></li>
             <li><a href="#">Hapus Toko</a></li>
         </ul>
