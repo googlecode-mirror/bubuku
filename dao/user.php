@@ -134,6 +134,18 @@ class User_Dao
 		$query=mysql_query($sql);
 	}
 	
+	function edit_akses(User $user)
+	{
+		$sql="
+		update 
+		user 
+		set 
+		AKSES='$user->akses'
+		where ID='$user->id'
+		";
+		$query=mysql_query($sql);
+	}
+
 	function cek_user(User $user)
 	{
 		$password = $user->password;
@@ -193,6 +205,17 @@ class User_Dao
 			}
 		}	
 		return $user;
+	}
+	
+	function delete(User $user)
+	{
+		$sql="drop 
+		into 
+		user
+		values(
+		'$user->id')
+		";
+		$query=mysql_query($sql);
 	}
 	
 
