@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=2.0">
    
      <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="../../xampp/htdocs/admin/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
          padding-bottom: 30px;
       }
     </style>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet">
-  <body background="img/white.jpg">
+    <link href="../../xampp/htdocs/admin/css/bootstrap-responsive.css" rel="stylesheet">
+  <body background="../../xampp/htdocs/admin/img/white.jpg">
 <div class="admin">
 <h1><font color="#333333">BUBUKU</h1></div></font>
 <!-- memuat menu -->
@@ -24,7 +24,7 @@
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pengguna
       </a>
         <ul class="dropdown-menu">
-            <li><a href="B_form_manajemen user.php">Manajemen User</a></li>
+            <li><a href="../../xampp/htdocs/admin/B_form_manajemen user.php">Manajemen User</a></li>
             <li><a href="#">Laporan User</a></li>
         </ul>
   </li>
@@ -61,7 +61,7 @@
     </li>
   <div class="span4 offset4" align="right">
     <ul class="nav">
-    <li><a href="revisi_admin.php">My Profile</a></li>
+    <li><a href="../../xampp/htdocs/admin/revisi_admin.php">My Profile</a></li>
     <!-- Button to trigger modal -->
     <li><a href="#mylogout" role="button" class="nav" data-toggle="modal">Logout</a>
  
@@ -76,13 +76,13 @@
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Tidak</button>
-    <a href="A3_logout.php"><button class="btn btn-primary">Iya</button></a>
+    <a href="../../xampp/htdocs/admin/A3_logout.php"><button class="btn btn-primary">Iya</button></a>
   </div>
 </div>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
     <!-- Bootstrap jQuery plugins compiled and minified -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../xampp/htdocs/admin/js/bootstrap.min.js"></script>
     </li>
     </ul>
   </div>

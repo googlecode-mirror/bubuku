@@ -1,166 +1,163 @@
+<?php
+include '../koneksi.php';
+include '../dao/member.php';
+include '../dao/user.php';
+include '../dao/auth.php';
+
+$koneksi=new koneksi();
+$koneksi->konek();
+$koneksi->konekDb();
+$auth = new auth();
+$auth->cek_sesi();
+$member_sesi = new Member();
+$member = new Member();
+$member_dao = new Member_Dao();
+$data=$member_dao->get_all();
+
+if(isset($_POST['logout']))
+{
+	$auth->logout();
+}
+?>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Admin</title>
+<title>Manajemen User</title>
 <meta name="viewport" content="width=device-width, initial-scale=2.0">
-<!-- Le styles -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<style type="text/css">
-body {
-	padding-bottom: 30px;
-}
-</style>
-<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+<title>Untitled Document</title>
+</head>
 <body background="img/white.jpg">
+<body>
 <div class="admin">
-  <h1><font color="#333333">BUBUKU</h1>
+  <h1><font color="#333333">BUBUKU - <font color="#0000FF">Manajemen User</h1>
 </div>
-</font>
 <!-- memuat menu -->
 <div class="navbar navbar">
 <div class="navbar-inner">
-<a class="brand" href="form_admin.html">Admin</a>
+<a class="brand" href="A_form_admin.php">Admin</a>
 <ul class="nav">
-<li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">Pengguna </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Validasi User</a></li>
-    <li><a href="#">Hapus User</a></li>
-    <li><a href="#">Laporan User</a></li>
+  <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="#">Pengguna </a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Manajemen User</a></li>
+      <li><a href="#">Laporan User</a></li>
+    </ul>
+  </li>
+  <li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">Toko</a> </li>
+  <li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">Produk</a> </li>
+  <li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">lainnya </a> </li>
+  
+  <div class="offset8" align="right">
+<ul class="nav">
+<li><form method="POST" action="?menu=tcari"> 
+   <div>
+        <input type="text" name="kata" maxlength="50" value="Pencarian..." onBlur="if(this.value=='') this.value='Pencarian...';" onFocus="if(this.value=='Pencarian...') this.value='';" />
+        <input type="submit" value="Go" />
+      </div>
+    </form>
+    </li>
+<li class="button"> <a class="button" href="login_form_umum.php">Login</a> </li>
+<li class="button"> <a class="button" href="registrasi.php">Daftar</a> </li>
   </ul>
+  </div>
+  <br />
+</ul>
+<div class="offset10" align="right">
+<ul class="nav">
+<li><a href="#myprofile"role="button" class="nav" data-toggle="modal">my profile</a>
+  <!-- Modal -->
+  <div id="myprofile" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Konfirmasi Halaman</h3>
+    </div>
+    <div class="modal-body">
+      <p>Apakah anda yakin akan meninggalkan halaman validasi user</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Tidak</button>
+      <a href="revisi_admin.php">
+      <button class="btn btn-primary">Iya</button>
+      </a> </div>
+  </div>
 </li>
-<li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">Buku </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Tambah Buku</a></li>
-    <li><a href="#">Ubah Data Buku</a></li>
-    <li><a href="#">Hapus Buku</a></li>
-    <li><a href="#">Stock Buku</a></li>
-  </ul>
-</li>
-<li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">Keuangan </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Lihat laporan</a></li>
-    <li><a href="#">tambah laporan</a></li>
-  </ul>
-</li>
-<li class="dropdown"> <a class="dropdown-toggle" data-toggle="disable" href="#">lainnya </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Verifikasi Kritik dan Saran</a></li>
-    <li><a href="#">Validasi Testimonial</a></li>
-    <li><a href="#">Pendataan Wishlist</a></li>
-  </ul>
-</li>
-<!-- memuat form Profile -->
-<body>
-<div class="container-fluid">
-  <div class="span10">
-    <!--Body content-->
+<!-- Button to trigger modal -->
+<li><a href="#mylogout" role="button" class="nav" data-toggle="modal">Logout</a>
+  <!-- Modal -->
+  <div id="mylogout" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Konfirmasi Logout</h3>
+    </div>
+    <div class="modal-body">
+      <p>Apakah anda yakin akan meninggalkan halaman akses admin?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Tidak</button>
+      <a href="A3_logout.php">
+      <button class="btn btn-primary" name="logout">Iya</button>
+      </a></div>
   </div>
 </div>
 </div>
-</body>
-<div class="span4 offset10" align="right">
-  <ul class="nav">
-    <li><a href="#myprofile"role="button" class="nav" data-toggle="modal">my profile</a>
-      <!-- Modal -->
-      <div id="myprofile" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 id="myModalLabel">Konfirmasi Halaman</h3>
-        </div>
-        <div class="modal-body">
-          <p>Anda sedang berada di halaman profile</p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">OK</button>
-        </div>
-      </div>
-    </li>
-    <!-- Button to trigger modal -->
-    <li><a href="#mylogout" role="button" class="nav" data-toggle="modal">Logout</a>
-      <!-- Modal -->
-      <div id="mylogout" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h3 id="myModalLabel">Konfirmasi Logout</h3>
-        </div>
-        <div class="modal-body">
-          <p>Apakah anda yakin akan meninggalkan halaman akses admin?</p>
-        </div>
-        <div class="modal-footer">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Tidak</button>
-          <a href="logout.php">
-          <button class="btn btn-primary">Iya</button>
-          </a></div>
-      </div>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-      <script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
-      <!-- Bootstrap jQuery plugins compiled and minified -->
-      <script src="js/bootstrap.min.js"></script>
-    </li>
-  </ul>
+<div class="topbox">
+                  <h2><p align="center" class="style1 style5">Daftar Member</p></h2>
+<p><span class="style6"><font color="#FF0000">Jumlah Member:<?php echo count($data);?> </span><br></font>    
+                                  </p>
+<table width="" border="1" cellpadding="5" cellspacing="0" bgcolor="#FFFFFF">
+                    <tr>
+                    <th width="20"><span class="style4">No</span></th>
+                      <th width="150"><span class="style4">Nama</span></th>
+                      <th width="400"><span class="style4">Alamat</span></th>
+                      <th width="200"><span class="style4">E-mail</span></th>
+                      <th width="100"><span class="style4">Telepon</span></th>
+                      <th width="94"><span class="style4">Agama</span></th>
+                      <th width="94"><span class="style4">Jenis Kelamin</span></th>
+                      <th width="100"><span class="style4">Hak Akses</span></th>                  
+                      <th width="98">&nbsp;</th>
+                    </tr>
+                    
+                  <?php
+				  $i=1;
+				  foreach ($data as $member) {
+				  $User_Dao=new User_Dao();
+				  $user=$User_Dao->get_id($member->id_member);
+				  
+				  ?>
+             
+                    <tr>
+                    <td><span class="style3"><?php echo $i;?></span></td>
+                      <td><span class="style3"><?php echo $member->nama;?></span></td>
+                      <td><span class="style3"><?php echo $member->alamat;?></span></td>
+                      <td><span class="style3"><?php echo $user->email;?></span></td>
+                      <td><span class="style3"><?php echo $member->telepon;?></span></td>
+                      <td><span class="style3"><?php echo $member->agama;?></span></td>
+                      <td><span class="style3"><?php echo $member->jenis_kelamin;?></span></td>
+                      <td><span class="style3"><?php echo $user->akses;?></span></td>
+                      <td><?php echo "<a href=\"B2_form_manajemen user_edit.php?id=$member->id_member\">";
+					  echo "Edit Member</a> ";?></td>
+                      
+                    </tr>
+                    <?php $i++;}?>
+    </table>
+
+                  <p><br> 				  
+    </p>
+</div> 
 </div>
+          
+<div class="clear"></div>
 
- <!--konten utama -->
-        		<div class="span8 offset1">
-            		<form action="#" method="POST">
-                        <b><h2><font color="#000099">Profil Admin</font></h2></b><br>
-                        <table width="1000" border="0" bordercolor="#FFFFFF" bgcolor="#FFFFFF">
-                          <tr>
-                            <td width="140" bgcolor="#FFFFFF">
-                            <table width="700" height="200" border="0" align="center">
-                              <tr>
-                                <td height="26">&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td width="20px" height="10px">><div class="hero-unit"><center><img src="img/home1.jpg"></center></td>
-                              </tr>
-                              <tr>
-                                <td width="73" height="35">Username</td>
-                                <td width="4">:</td>
-                                <td width="212"><input type="text" name="username" size="30"></td>
-                                <td width="4">&nbsp;</td>
-                                <td width="149">Email</td>
-                                <td width="8">:</td>
-                                <td width="212"><input type="text" name="email" size="30"></td>
-                              </tr>
-                              <tr>
-                                <td height="31">Telepon</td>
-                                <td>:</td>
-                                <td><input type="text" name="telepon" size="30"></td>
-                                <td>&nbsp;</td>
-                                <td>Alamat</td>
-                                <td>:</td>
-                                <td><input type="text" name="Alamat" size="60"></td>
-                              </tr>
-                              <tr>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td><button class="btn btn-primary" type="button" value="Ubah profil">Ubah Password</button></td>
-                                <td><button class="btn btn-primary" type="button" value="Ubah profil">Ubah Profil</button></td>
-                              </tr>
-                              <tr>
-                                <td height="54">&nbsp;</td>
-                                <td>&nbsp;</td>
-                                <td>&nbsp;</td>
-                               
-                              </tr>
-                            </table>
-
-                            </td>
-                          </tr>
-                        </table>
-
-                    </form>
-                </div>
-                
-                
-            </div>
-        </div>
-    <!-- membuat conten tengah yaitu sign up -->
-
-</head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+<!-- Bootstrap jQuery plugins compiled and minified -->
+<script src="js/bootstrap.min.js"></script>
+</div>
+</body>
 </html>
