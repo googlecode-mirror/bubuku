@@ -23,7 +23,7 @@ $member_sesi=$member_dao->get_id_member($id_user);
 $member=$member_dao->get_id($member_sesi->id_member);
 $user = new User();
 $user_dao = new User_Dao();
-$user=$user_dao->get_id($member->id_user)
+$user=$user_dao->get_id($member->id_user);
 
 ?>
 
