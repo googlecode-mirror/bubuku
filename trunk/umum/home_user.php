@@ -129,7 +129,7 @@ Kami berusaha untuk memberikan informasi dan pelayanan yang terbaik bagi anda! <
       </div>
     </form>
   	
-        <a href="#"><img src="img/logo.jpg" alt="aaa" name="Insert_logo" width="220x" height="90px" id="Insert_logo" style="background-color: #8090AB; display:block;" /></a> 
+        <a href="#"><img src="img/logo.jpg" alt="aaa" name="Insert_logo" width="270x" height="90px" id="Insert_logo" style="background-color: #8090AB; display:block;" /></a> 
 
         <div class="row-fluid">
         <div class="span3">
