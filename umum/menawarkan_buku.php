@@ -122,7 +122,7 @@ if (isset($_POST['simpan_jual']) ){
                        <tr>
                          <td height="31">Foto</td>
                          <td>:</td>
-                         <td><input type="file" name="foto"></td>
+                         <td><input type="file" size="30px" name="foto"></td>
                        </tr>
                        <tr>
                          <td>&nbsp;</td>
